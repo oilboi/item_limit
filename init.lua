@@ -22,8 +22,11 @@ depends_string = depends_string:sub(1, -2) -- remove the last comma off the end
 print("--------------------")
 print("ATTENTION: ITEM_LIMIT IS CHECKING FOR ALL INSTALLED MODS!")
 print("--------------------")
+minetest.after(3,function()
+  minetest.chat_send_all("ATTENTION: ITEM_LIMIT IS CHECKING FOR ALL INSTALLED MODS!")
+end)
 if mod_storage:get_string("depends") == "" then
-    print("NO DEPENDANCIES SET!")
+    print("NO DEPENDANCIES SET! (FIRST TIME SETUP)")
     print("--------------------")
     print("SETTING DEPENDANCIES!")
     mod_storage:set_string("depends", depends_string)
@@ -31,13 +34,32 @@ if mod_storage:get_string("depends") == "" then
     print("---------------------")
     print("DEPENDANCIES SET!")
     print("---------------------")
-    print("PLEASE RESTART MINETEST TO SET ALL DEPENDANCIES!")
+    print("PLEASE RESTART MINETEST TO ENJOY!")
+    minetest.after(4,function()
+      minetest.chat_send_all("NO DEPENDANCIES SET! (FIRST TIME SETUP)")
+    end)
+    minetest.after(5,function()
+      minetest.chat_send_all("SETTING DEPENDANCIES!")
+    end)
+    minetest.after(6,function()
+      minetest.chat_send_all("DEPENDANCIES SET!")
+    end)
+    minetest.after(7,function()
+      minetest.chat_send_all("PLEASE RESTART MINETEST TO ENJOY!")
+    end)
 else
     --if no change tell
     if mod_storage:get_string("depends") == depends_string then
       print("NO NEW MODS DISCOVERED!")
       print("--------------------")
       print("END OF INDEX!")
+      minetest.after(4,function()
+        minetest.chat_send_all("NO NEW MODS DISCOVERED!")
+      end)
+      minetest.after(5,function()
+        minetest.chat_send_all("END OF INDEX!")
+      end)
+
     --if added mod, update
     else
       print("NEW MODS DISCOVERED!")
@@ -49,6 +71,18 @@ else
       print("DEPENDANCIES UPDATED!")
       print("--------------------")
       print("PLEASE RESTART TO ENJOY YOUR NEW MODS!")
+      minetest.after(4,function()
+        minetest.chat_send_all("NEW MODS DISCOVERED!")
+      end)
+      minetest.after(5,function()
+        minetest.chat_send_all("UPDATING DEPENDANCIES!")
+      end)
+      minetest.after(6,function()
+        minetest.chat_send_all("DEPENDANCIES UPDATED!")
+      end)
+      minetest.after(7,function()
+        minetest.chat_send_all("PLEASE RESTART TO ENJOY YOUR NEW MODS!")
+      end)
     end
 end
 
