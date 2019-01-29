@@ -1,0 +1,1 @@
+If you encounter any issues (which should not happen because everything is an optional dependancy!) then delete the mod.conf file in the mod folder and the mod storage file for the mod in the world folder for hard reset. Easy!
